@@ -244,6 +244,13 @@ variable "vpc_security_group_ids" {
   default     = null
 }
 
+variable "inline_provisioner_list" {
+  description = "A list of scripts for the provisioner"
+  type        = list(string)
+  default     = null
+}
+
+
 variable "timeouts" {
   description = "Define maximum timeout for creating, updating, and deleting EC2 instance resources"
   type        = map(string)
