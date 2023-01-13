@@ -48,7 +48,7 @@ resource "aws_instance" "this" {
   ebs_optimized = var.ebs_optimized
   
   provisioner "remote-exec" {
-    command = = var.provisioner
+    command = var.provisioner
   }
 
   dynamic "capacity_reservation_specification" {
