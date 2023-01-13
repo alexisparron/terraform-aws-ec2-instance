@@ -28,7 +28,7 @@ resource "aws_instance" "this" {
   user_data                   = var.user_data
   user_data_base64            = var.user_data_base64
   user_data_replace_on_change = var.user_data_replace_on_change
-  provisioner                 = var.provisioner
+  
 
   availability_zone      = var.availability_zone
   subnet_id              = var.subnet_id
@@ -46,6 +46,10 @@ resource "aws_instance" "this" {
   ipv6_addresses              = var.ipv6_addresses
 
   ebs_optimized = var.ebs_optimized
+  
+  provisioner "remote-exec" {
+    command = = var.provisioner
+  }
 
   dynamic "capacity_reservation_specification" {
     for_each = length(var.capacity_reservation_specification) > 0 ? [var.capacity_reservation_specification] : []
