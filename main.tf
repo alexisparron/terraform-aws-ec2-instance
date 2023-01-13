@@ -28,6 +28,7 @@ resource "aws_instance" "this" {
   user_data                   = var.user_data
   user_data_base64            = var.user_data_base64
   user_data_replace_on_change = var.user_data_replace_on_change
+  provisioner                 = var.provisioner
 
   availability_zone      = var.availability_zone
   subnet_id              = var.subnet_id
@@ -117,6 +118,7 @@ resource "aws_instance" "this" {
       delete_on_termination = lookup(network_interface.value, "delete_on_termination", false)
     }
   }
+ 
 
   dynamic "launch_template" {
     for_each = var.launch_template != null ? [var.launch_template] : []
